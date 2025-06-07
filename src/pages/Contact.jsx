@@ -14,8 +14,8 @@ export default function ContactUs() {
     e.preventDefault();
     setError("");
     try {
-      // Replace below URL with your backend endpoint
-      await axios.post("http://localhost:5000/api/contact", formData);
+      // Replace below URL with your backend endpoint 
+     await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/contact`, formData);
       setSubmitted(true);
       setFormData({ name: "", email: "", message: "" });
     } catch (err) {
@@ -29,7 +29,7 @@ export default function ContactUs() {
 
       <div className="mb-6 text-center space-y-2 text-gray-700">
         <p>Email: <a href="mailto:support@mentorconnectbiz.com" className="text-blue-600 underline">support@mentorconnectbiz.com</a></p>
-        <p>Phone: <a href="tel:+911234567890" className="text-blue-600 underline">+91 12345 67890</a></p>
+        <p>Phone: <a href="tel:+911234567890" className="text-blue-600 underline">+91 8383952262</a></p>
       </div>
 
       {submitted ? (

@@ -4,7 +4,7 @@ export default function AboutUs() {
       <h2 className="text-3xl font-bold mb-6">Our Mission is to Empower through Mentorship</h2>
       <div className="flex flex-col md:flex-row items-center gap-6">
         <img
-          src="/vivek-sharma.jpg"
+          src="/images/vivek-sharma.png"
           alt="Vivek Sharma"
           className="w-48 h-48 rounded-full object-cover"
         />
