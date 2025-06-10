@@ -13,7 +13,7 @@ export default function Footer() {
           <a href="/about" className="hover:text-white">About</a>
           <a href="/services" className="hover:text-white">Services</a>
           <a href="/become-mentor" className="hover:text-white">Join as Mentor</a>
-          <a href="/contact-us" className="hover:text-white">Contact</a>
+          <a href="/contact" className="hover:text-white">Contact</a>
         </nav>
         <div className="flex space-x-4 mt-4 md:mt-0">
           <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-white">
