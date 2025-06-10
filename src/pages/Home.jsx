@@ -31,9 +31,9 @@ export default function Home() {
         {/* Right Image/Visual */}
         <div className="md:w-1/2 flex justify-center">
           <img
-            src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+            src="/images/menuimg1.jpg"
             alt="Mentorship Illustration"
-            className="w-80 md:w-96"
+            className="w-80 md:w-96 rounded-2xl"
           />
         </div>
       </div>
