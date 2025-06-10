@@ -16,7 +16,7 @@ export default function About() {
         {/* Founder Image and Note (optional) */}
         <div className="flex flex-col md:flex-row items-center gap-6 mb-12">
           <img
-            src="https://cdn-icons-png.flaticon.com/512/147/147144.png"
+            src="/images/vivek-sharma.png"
             alt="Founder Vivek Sharma"
             className="w-32 h-32 rounded-full object-cover border-4 border-blue-500"
           />
