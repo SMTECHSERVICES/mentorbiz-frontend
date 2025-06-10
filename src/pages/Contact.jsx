@@ -28,7 +28,7 @@ export default function ContactUs() {
       <h2 className="text-3xl font-bold mb-6 text-center text-blue-700">Contact Us</h2>
 
       <div className="mb-6 text-center space-y-2 text-gray-700">
-        <p>Email: <a href="mailto:support@mentorconnectbiz.com" className="text-blue-600 underline">support@mentorconnectbiz.com</a></p>
+        <p>Email: <a href="mailto:support@mentorconnectbiz.com" className="text-blue-600 underline">info@mentors.ind.in</a></p>
         <p>Phone: <a href="tel:+911234567890" className="text-blue-600 underline">+91 8383952262</a></p>
       </div>
 
