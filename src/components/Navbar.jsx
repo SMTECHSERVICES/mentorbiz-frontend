@@ -30,7 +30,7 @@ export default function Navbar() {
     <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Link to="/" className="text-2xl font-bold text-blue-600">
-          MentorConnectBiz
+          Mentors India
         </Link>
 
         {/* Desktop Menu */}
