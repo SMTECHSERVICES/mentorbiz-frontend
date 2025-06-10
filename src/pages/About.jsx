@@ -7,7 +7,7 @@ export default function About() {
         </h2>
 
         <p className="text-lg text-gray-700 text-center mb-10">
-          <strong>MentorConnectBiz.com</strong> is a startup founded by <strong>Vivek Sharma</strong> 
+          <strong>Mentors India</strong> is a startup founded by <strong>Vivek Sharma</strong> 
           with a vision to bridge the gap between ambition and expertise.
           Whether you're a student, working professional, job seeker, or entrepreneur,
           we connect you with mentors from top MNCs across diverse fields to help you grow.
@@ -22,10 +22,10 @@ export default function About() {
           />
           <div>
             <p className="text-gray-800 font-medium">Vivek Sharma</p>
-            <p className="text-sm text-gray-600">Founder, MentorConnectBiz.com</p>
+            <p className="text-sm text-gray-600">Founder, Mentor India</p>
             <p className="mt-2 text-gray-600">
               “I believe the right mentor can change the direction of your career or business. 
-              Through MentorConnectBiz, our goal is to ensure no ambition goes unsupported.”
+              Through Mentors India, our goal is to ensure no ambition goes unsupported.”
             </p>
           </div>
         </div>

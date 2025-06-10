@@ -10,9 +10,9 @@ export default function AboutUs() {
         />
         <div>
           <p className="mb-4 text-lg leading-relaxed">
-            MentorConnectBiz.com is a startup founded by Vivek Sharma with a vision to bridge the gap between ambition and expertise. Whether you're a student, working professional, job seeker, or entrepreneur, we connect you with mentors from top MNCs across diverse fields to help you grow.
+            Mentor india is a startup founded by Vivek Sharma with a vision to bridge the gap between ambition and expertise. Whether you're a student, working professional, job seeker, or entrepreneur, we connect you with mentors from top MNCs across diverse fields to help you grow.
           </p>
-          <p className="italic font-semibold">— Vivek Sharma, Founder</p>
+          <p className="italic font-semibold">— Vivek Sharma , Founder</p>
         </div>
       </div>
 

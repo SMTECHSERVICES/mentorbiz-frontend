@@ -21,7 +21,7 @@ export default function ContactUs() {
   return (
     <div className="max-w-md mx-auto p-6">
       <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
-      <p>Email: support@mentorconnectbiz.com</p>
+      <p>Email: info@mentors.ind.in</p>
       <p>Phone: +918383952262</p>
       {submitted ? (
         <p className="text-green-600 mt-4">Thank you! We'll get back to you soon.</p>
