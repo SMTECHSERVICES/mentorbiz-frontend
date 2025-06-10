@@ -7,7 +7,7 @@ import Services from './pages/Services';
 import FindMentor from './pages/FindMentor';
 import BecomeMentor from './pages/BecomeMentor';
 import Contact from './pages/Contact';
-import MentorList from './components/MentorList';
+// import MentorList from './components/MentorList';
 
 
 export default function App() {
@@ -24,7 +24,7 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
-      <MentorList />
+      {/* <MentorList /> */}
       <Footer />
 
     </div>
