@@ -126,7 +126,7 @@ const Services = () => {
     },
     {
       id: 8,
-      imageUrl: '/images/Career Development.jpg',
+      imageUrl: '/images/Academic Guidance.jpg',
       title: 'Academic Guidance',
       description: 'Receive support for academic choices, study strategies, and navigating educational paths for success.',
       buttonText: 'Explore',
