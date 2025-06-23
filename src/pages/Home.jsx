@@ -43,7 +43,7 @@
 import { Link } from "react-router-dom";
 import { FaUserGraduate, FaChalkboardTeacher } from "react-icons/fa";
 import About from "./About";
-import hero from '/images/home.jpeg'
+// import hero from '/images/home.jpeg'
 import WhyChooseUs from "../components/WhyChooseUs";
 import Services from "./Services";
 
@@ -53,7 +53,7 @@ const Home = () => {
     <section
     
       className="bg-cover bg-center bg-no-repeat relative h-screen flex items-center"
-      style={{ backgroundImage: `url(${hero})` }}
+      // style={{ backgroundImage: `url(${hero})` }}
     >
       {/* Overlay */}
       <div className="absolute inset-0 bg-[#1D2FD4]/60 bg-opacity-90"></div>
