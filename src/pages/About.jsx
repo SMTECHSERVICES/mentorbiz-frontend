@@ -1,45 +1,51 @@
-export default function About() {
+
+import React from "react";
+import handshakeImage from '/images/handshake.jpeg'
+
+const About = () => {
   return (
-    <section className="py-16 px-4 bg-white">
-      <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold text-center text-blue-700 mb-6">
-          Our Mission is to Empower through Mentorship
-        </h2>
+    <div className="bg-white px-6 py-12 md:py-20 md:px-20">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        {/* Left - Text Content */}
+        <div>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            About MentorConnect
+          </h2>
+          <p className="text-lg text-gray-700 mb-4">
+            MentorConnect is a platform dedicated to connecting students and young professionals with experienced mentors across various industries. Our mission is to democratize access to mentorship and career guidance.
+          </p>
+          <p className="text-lg text-gray-700">
+            Founded in 2023, we've already helped thousands of mentees find the right guidance to achieve their goals. Our mentors are carefully vetted professionals who are passionate about sharing their knowledge and experience.
+          </p>
 
-        <p className="text-lg text-gray-700 text-center mb-10">
-          <strong>Mentors India</strong> is a startup founded by <strong>Vivek Sharma</strong> 
-          with a vision to bridge the gap between ambition and expertise.
-          Whether you're a student, working professional, job seeker, or entrepreneur,
-          we connect you with mentors from top MNCs across diverse fields to help you grow.
-        </p>
-
-        {/* Founder Image and Note (optional) */}
-        <div className="flex flex-col md:flex-row items-center gap-6 mb-12">
-          <img
-            src="/images/vivek-sharma.png"
-            alt="Founder Vivek Sharma"
-            className="w-32 h-32 rounded-full object-cover border-4 border-blue-500"
-          />
-          <div>
-            <p className="text-gray-800 font-medium">Vivek Sharma</p>
-            <p className="text-sm text-gray-600">Founder, Mentor India</p>
-            <p className="mt-2 text-gray-600">
-              “I believe the right mentor can change the direction of your career or business. 
-              Through Mentors India, our goal is to ensure no ambition goes unsupported.”
-            </p>
+          {/* Stats */}
+          <div className="mt-10 grid grid-cols-3 gap-4 text-center">
+            <div>
+              <p className="text-3xl font-bold text-blue-600">500+</p>
+              <p className="text-sm text-gray-600 mt-1">Expert Mentors</p>
+            </div>
+            <div>
+              <p className="text-3xl font-bold text-blue-600">10,000+</p>
+              <p className="text-sm text-gray-600 mt-1">Satisfied Mentees</p>
+            </div>
+            <div>
+              <p className="text-3xl font-bold text-blue-600">25,000+</p>
+              <p className="text-sm text-gray-600 mt-1">Mentorship Sessions</p>
+            </div>
           </div>
         </div>
 
-        {/* Timeline Vision */}
-        <div className="bg-blue-50 p-6 rounded shadow">
-          <h3 className="text-xl font-semibold text-blue-600 mb-4">Our Vision Timeline</h3>
-          <ul className="list-disc list-inside space-y-2 text-gray-700">
-            <li>🎯 2023 – Conceptualized with the need for structured mentorship in India.</li>
-            <li>🚀 2024 – Launched MVP with 100+ mentors onboarded.</li>
-            <li>🌐 2025 – Expanding mentorship categories and tech platform globally.</li>
-          </ul>
+        {/* Right - Image */}
+        <div className="rounded-2xl overflow-hidden shadow-lg">
+          <img
+            src={`${handshakeImage}` }// Replace with your correct image path
+            alt="Mentorship handshake"
+            className="w-full h-full object-cover"
+          />
         </div>
       </div>
-    </section>
+    </div>
   );
-}
+};
+
+export default About;

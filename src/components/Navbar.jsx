@@ -1,68 +1,72 @@
-// import { Link } from 'react-router-dom';
 
-// export default function Navbar() {
+// import { Link } from "react-router-dom";
+
+// const Navbar = () => {
 //   return (
-//     <nav className="bg-white shadow-md p-4 sticky top-0 z-50">
-//       <div className="container mx-auto flex justify-between items-center">
-//         <Link to="/" className="text-2xl font-bold text-blue-600">MentorConnectIndia</Link>
-//         <div className="space-x-4">
-//           <Link to="/" className="text-gray-700 hover:text-blue-600">Home</Link>
-//           <Link to="/about" className="text-gray-700 hover:text-blue-600">About</Link>
-//           <Link to="/services" className="text-gray-700 hover:text-blue-600">Services</Link>
-//           <Link to="/find-mentor" className="text-gray-700 hover:text-blue-600">Find a Mentor</Link>
-//           <Link to="/become-mentor" className="text-gray-700 hover:text-blue-600">Become a Mentor</Link>
-//           <Link to="/contact" className="text-gray-700 hover:text-blue-600">Contact</Link>
-//         </div>
+//     <nav className="bg-white shadow-md fixed w-full z-50">
+//       <div className="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center">
+//         <Link to="/" className="text-2xl font-bold flex justify-center items-center" style={{ color: "#465ADA" }}>
+//          <img src="/images/fav_icon.png" alt="" className="h-12 w-15 " /> MentorConnect
+//         </Link>
+//         <ul className="hidden md:flex gap-8 text-gray-700 font-medium text-sm">
+//           <li><Link to="/">Home</Link></li>
+//           <li><Link to="/signup">Student Sign Up</Link></li>
+//           <li><Link to="/about">About</Link></li>
+//           <li><Link to="/services">Services</Link></li>
+//           <li><Link to="/become-mentor">Become a Mentor</Link></li>
+//           <li><Link to="/find-mentors">Find Mentors</Link></li>
+//           <li><Link to="/contact">Contact</Link></li>
+//         </ul>
 //       </div>
 //     </nav>
 //   );
-// }
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+// };
 
-export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+// export default Navbar;
 
-  const toggleMenu = () => setIsOpen(!isOpen);
 
-  return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link to="/" className="text-2xl font-bold text-blue-600">
-          Mentors India
-        </Link>
+import { Link } from "react-router-dom";
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-6">
-          <Link to="/" className="text-gray-700 hover:text-blue-600">Home</Link>
-          <Link to="/about" className="text-gray-700 hover:text-blue-600">About</Link>
-          <Link to="/services" className="text-gray-700 hover:text-blue-600">Services</Link>
-          <Link to="/find-mentor" className="text-gray-700 hover:text-blue-600">Find a Mentor</Link>
-          <Link to="/become-mentor" className="text-gray-700 hover:text-blue-600">Become a Mentor</Link>
-          <Link to="/contact" className="text-gray-700 hover:text-blue-600">Contact</Link>
-        </div>
+const MenuLink = ({ to, children }) => (
+  <Link
+    to={to}
+    className="relative font-medium text-gray-700 group"
+  >
+    {children}
+    {/* animated underline */}
+    <span
+      className="absolute left-0 -bottom-0.5 h-0.5 w-full origin-left
+                 scale-x-0 bg-[#465ADA] transition-transform duration-300
+                 group-hover:scale-x-100"
+    />
+  </Link>
+);
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={toggleMenu}
-          className="md:hidden text-gray-700 focus:outline-none"
-        >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
-      </div>
+const Navbar = () => (
+  <nav className="bg-white shadow-md fixed w-full z-50">
+    <div className="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center">
+      <Link
+        to="/"
+        className="flex items-center text-2xl font-bold"
+        style={{ color: "#465ADA" }}
+      >
+        <img src="/images/fav_icon.png" alt="" className="h-12 w-15 mr-2" />
+        MentorConnect
+      </Link>
 
-      {/* Mobile Dropdown Menu */}
-      {isOpen && (
-        <div className="md:hidden px-4 pb-4">
-          <Link to="/" className="block py-2 text-gray-700 hover:text-blue-600">Home</Link>
-          <Link to="/about" className="block py-2 text-gray-700 hover:text-blue-600">About</Link>
-          <Link to="/services" className="block py-2 text-gray-700 hover:text-blue-600">Services</Link>
-          <Link to="/find-mentor" className="block py-2 text-gray-700 hover:text-blue-600">Find a Mentor</Link>
-          <Link to="/become-mentor" className="block py-2 text-gray-700 hover:text-blue-600">Become a Mentor</Link>
-          <Link to="/contact" className="block py-2 text-gray-700 hover:text-blue-600">Contact</Link>
-        </div>
-      )}
-    </nav>
-  );
-}
+      <ul className="hidden md:flex gap-8 text-sm">
+        <li><MenuLink to="/">Home</MenuLink></li>
+         <li><MenuLink to="/about">About</MenuLink></li>
+        <li><MenuLink to="/services">Services</MenuLink></li>
+        <li><MenuLink to="/mentee-registraion">Mentee Registraion</MenuLink></li>
+       
+        <li><MenuLink to="/mentor-registration">Mentor Registration</MenuLink></li>
+        {/* <li><MenuLink to="/find-mentors">Find Mentors</MenuLink></li> */}
+        <li><MenuLink to="/contact">Contact</MenuLink></li>
+        <li><MenuLink to="/login">Login</MenuLink></li>
+      </ul>
+    </div>
+  </nav>
+);
+
+export default Navbar;
