@@ -43,7 +43,7 @@
 import { Link } from "react-router-dom";
 import { FaUserGraduate, FaChalkboardTeacher } from "react-icons/fa";
 import About from "./About";
-import hero from '/images/home.jpeg'
+import hero from '/images/homebanner.jpg'
 import WhyChooseUs from "../components/WhyChooseUs";
 import Services from "./Services";
 
