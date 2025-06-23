@@ -56,13 +56,13 @@ const Home = () => {
       style={{ backgroundImage: `url(${hero})` }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 bg-[#1D2FD4]/60 bg-opacity-90"></div>
+      <div className="absolute inset-0 bg-[white]/60 bg-opacity-90"></div>
 
       <div className="relative z-10 w-full text-center px-6">
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+        <h1 className="text-4xl md:text-5xl font-bold text-black mb-6">
           Unlock Your Potential with <br /> Expert Guidance
         </h1>
-        <p className="text-lg md:text-xl text-white mb-10 max-w-3xl mx-auto">
+        <p className="text-lg md:text-xl text-black mb-10 max-w-3xl mx-auto">
           Connect with industry professionals who can help you navigate your career path,
           develop skills, and achieve your goals through personalized mentorship.
         </p>
