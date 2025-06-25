@@ -1,7 +1,4 @@
 
-
-
-// src/pages/MenteeRegistration.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -11,9 +8,6 @@ const MenteeRegistrationPage = () => {
   const [formData, setFormData] = useState({
     fullName: '',
     education: '',
-    twelfthPassing: '',
-    graduation: '',
-    postGraduation: '',
     currentJob: '',
     email: '',
     phone: '',
@@ -106,76 +100,64 @@ const MenteeRegistrationPage = () => {
     return true;
   };
   
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setSubmitting(true);
-    setSubmitError('');
-    
-    if (!validateForm()) {
-      setSubmitting(false);
-      return;
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  setSubmitting(true);
+  setSubmitError('');
+
+  if (!validateForm()) {
+    setSubmitting(false);
+    return;
+  }
+
+  try {
+    const formDataToSend = new FormData();
+    formDataToSend.append('fullName', formData.fullName);
+    formDataToSend.append('education', formData.education);
+    formDataToSend.append('currentJob', formData.currentJob);
+    formDataToSend.append('email', formData.email);
+    formDataToSend.append('phone', formData.phone);
+    formDataToSend.append('password', formData.password);
+    formDataToSend.append('confirmPassword', formData.confirmPassword);
+
+    formData.mentorshipInterests.forEach(interest => {
+      formDataToSend.append('mentorshipInterests', interest); // Keep same key if backend expects array
+    });
+
+    if (formData.resume) {
+      formDataToSend.append('resume', formData.resume);
     }
-    
-    try {
-      // Create FormData to handle file upload
-      const formDataToSend = new FormData();
-      formDataToSend.append('fullName', formData.fullName);
-      formDataToSend.append('education', formData.education);
-      formDataToSend.append('twelfthPassing', formData.twelfthPassing);
-      formDataToSend.append('graduation', formData.graduation);
-      formDataToSend.append('postGraduation', formData.postGraduation);
-      formDataToSend.append('currentJob', formData.currentJob);
-      formDataToSend.append('email', formData.email);
-      formDataToSend.append('phone', formData.phone);
-      formDataToSend.append('password', formData.password);
-      formData.mentorshipInterests.forEach(interest => {
-        formDataToSend.append('mentorshipInterests[]', interest);
-      });
-      if (formData.resume) {
-        formDataToSend.append('resume', formData.resume);
+
+  const response =  await axios.post('http://localhost:5000/api/mentee/register', formDataToSend, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
       }
-      
-      // Replace with your actual API endpoint
-      await axios.post('https://api.example.com/mentee/register', formDataToSend, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
-      
-      setSubmitSuccess(true);
-      // Reset form after successful submission
-      setFormData({
-        fullName: '',
-        education: '',
-        twelfthPassing: '',
-        graduation: '',
-        postGraduation: '',
-        currentJob: '',
-        email: '',
-        phone: '',
-        password: '',
-        confirmPassword: '',
-        mentorshipInterests: [],
-        resume: null
-      });
-    } catch (error) {
-      console.error('Registration error:', error);
-      setSubmitError(error.response?.data?.message || 'Failed to submit registration. Please try again later.');
-    } finally {
-      setSubmitting(false);
-    }
-  };
+    });
+console.log(response)
+    setSubmitSuccess(true);
+    setFormData({
+      fullName: '',
+      education: '',
+      currentJob: '',
+      email: '',
+      phone: '',
+      password: '',
+      confirmPassword: '',
+      mentorshipInterests: [],
+      resume: null
+    });
+  } catch (error) {
+    console.error('Registration error:', error);
+    setSubmitError(error.response?.data?.msg || 'Failed to submit registration. Please try again later.');
+  } finally {
+    setSubmitting(false);
+  }
+};
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8 px-4">
       <div className="max-w-4xl mx-auto mt-5">
-        {/* <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-indigo-800 mb-2">Mentee Registration</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Join our mentorship program to accelerate your career growth. Register now to connect with experienced mentors in your field.
-          </p>
-        </div> */}
-        
         <div className="bg-white rounded-xl shadow-lg overflow-hidden">
           <div className="bg-gradient-to-r from-blue-600 to-indigo-700 py-6 px-8">
             <div className="flex items-center">
@@ -246,57 +228,8 @@ const MenteeRegistrationPage = () => {
                 </div>
                 
                 <div className="mb-6">
-                  <label className="block text-gray-700 font-medium mb-2" htmlFor="twelfthPassing">
-                    12th Year of Passing
-                  </label>
-                  <input
-                    type="text"
-                    id="twelfthPassing"
-                    name="twelfthPassing"
-                    value={formData.twelfthPassing}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="e.g., 2018"
-                  />
-                </div>
-                
-                <div className="mb-6">
-                  <label className="block text-gray-700 font-medium mb-2" htmlFor="graduation">
-                    Graduation (Optional)
-                  </label>
-                  <input
-                    type="text"
-                    id="graduation"
-                    name="graduation"
-                    value={formData.graduation}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="e.g., Bachelor's Degree"
-                  />
-                </div>
-              </div>
-              
-              {/* Right Column */}
-              <div>
-                <div className="mb-6">
-                  <label className="block text-gray-700 font-medium mb-2" htmlFor="postGraduation">
-                    Post Graduation (Optional)
-                  </label>
-                  <input
-                    type="text"
-                    id="postGraduation"
-                    name="postGraduation"
-                    value={formData.postGraduation}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="e.g., Master's Degree"
-                  />
-                </div>
-                
-                <div className="mb-6">
                   <label className="block text-gray-700 font-medium mb-2" htmlFor="currentJob">
-                    Current Job (Optional)
+                    Current Job
                   </label>
                   <input
                     type="text"
@@ -308,7 +241,10 @@ const MenteeRegistrationPage = () => {
                     placeholder="e.g., Software Engineer"
                   />
                 </div>
-                
+              </div>
+              
+              {/* Right Column */}
+              <div>
                 <div className="mb-6">
                   <label className="block text-gray-700 font-medium mb-2" htmlFor="email">
                     Email ID
@@ -464,7 +400,7 @@ const MenteeRegistrationPage = () => {
             {/* Resume Upload */}
             <div className="mb-8">
               <label className="block text-gray-700 font-medium mb-2">
-                Resume Upload (Optional)
+                Resume Upload
               </label>
               <div className="flex items-center">
                 <label className="flex flex-col items-center px-4 py-2 bg-white text-indigo-600 rounded-lg border border-indigo-300 cursor-pointer hover:bg-indigo-50 transition-colors">
@@ -495,6 +431,7 @@ const MenteeRegistrationPage = () => {
               <div className="flex space-x-4">
                 <button
                   type="button"
+                  onClick={() => navigate('/')}
                   className="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 transition-colors"
                 >
                   Cancel

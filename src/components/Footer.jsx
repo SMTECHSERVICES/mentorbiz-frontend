@@ -49,7 +49,7 @@ export default function Footer() {
           {/* कॉपीराइट + डिज़ाइन बाय */}
           <p className="text-xs mt-2">
             © {new Date().getFullYear()} All rights reserved. &nbsp;|&nbsp;
-            Designed by{" "}
+            Powered by:{" "}
             <a
               href="https://www.smservice.co.in/"
               target="_blank"
@@ -61,7 +61,7 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* सोशल-मीडिया आइकन */}
+        {/* Social ICON*/}
         <div className="flex space-x-4">
           <a
             href="https://facebook.com"
