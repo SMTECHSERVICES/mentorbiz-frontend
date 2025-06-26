@@ -76,11 +76,12 @@ const Navbar = () => {
       <li><MenuLink to="/"                  onClick={() => setOpen(false)}>Home</MenuLink></li>
       <li><MenuLink to="/about"             onClick={() => setOpen(false)}>About</MenuLink></li>
       <li><MenuLink to="/services"          onClick={() => setOpen(false)}>Services</MenuLink></li>
-      <li><MenuLink to="/mentee-registraion" onClick={() => setOpen(false)}>Mentee Registration</MenuLink></li>
-      <li><MenuLink to="/mentor-registration" onClick={() => setOpen(false)}>Mentor Registration</MenuLink></li>
+      {/* <li><MenuLink to="/mentee-registraion" onClick={() => setOpen(false)}>Mentee Registration</MenuLink></li>
+      <li><MenuLink to="/mentor-registration" onClick={() => setOpen(false)}>Mentor Registration</MenuLink></li> */}
       {/* <li><MenuLink to="/find-mentors"   onClick={() => setOpen(false)}>Find Mentors</MenuLink></li> */}
-      <li><MenuLink to="/contact"           onClick={() => setOpen(false)}>Contact</MenuLink></li>
-      <li><MenuLink to="/login"             onClick={() => setOpen(false)}>Login</MenuLink></li>
+      <li><MenuLink to="/current-jobs" onClick={() => setOpen(false)}>Current Jobs</MenuLink></li>
+      <li><MenuLink to="/contact" onClick={() => setOpen(false)}>Contact</MenuLink></li>
+      <li><MenuLink to="/login" onClick={() => setOpen(false)}>Login</MenuLink></li>
     </>
   );
 
