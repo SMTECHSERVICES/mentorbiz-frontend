@@ -71,95 +71,13 @@ import React from 'react'
 import ServiceCard from '../components/ServiceCard'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useServices } from '../context/ServiceContext'
 
 const Services = () => {
+
+  const { servicesData } = useServices();
   const navigate = useNavigate();
-  const [servicesData, setServicesData] = useState([
-    {
-      id: 1,
-      imageUrl: '/images/Career Development.jpg',
-      title: 'Career Development',
-      description: 'Get personalized advice on career paths, industry trends, and professional development from experienced mentors.',
-      buttonText: 'Explore',
-    },
-    {
-      id: 2,
-      imageUrl: '/images/Technical Skills.png',
-      title: 'Technical Skills',
-      description: 'Enhance your coding, software engineering, and other technical abilities with guidance from industry experts.',
-      buttonText: 'Explore',
-    },
-    {
-      id: 3,
-      imageUrl: '/images/Leadership Coaching.png',
-      title: 'Leadership Coaching',
-      description: 'Develop strong leadership qualities, management techniques, and team-building strategies for effective leadership.',
-      buttonText: 'Explore',
-    },
-    {
-      id: 4,
-      imageUrl: '/images/Interview Preparation.png',
-      title: 'Interview Preparation',
-      description: 'Master interview techniques, mock interviews, and resume optimization to land your dream job.',
-      buttonText: 'Explore',
-    },
-    {
-      id: 5,
-      imageUrl: '/images/Resume Review.png',
-      title: 'Resume Review',
-      description: 'Receive expert feedback on your resume and cover letter to make them stand out to recruiters.',
-      buttonText: 'Explore',
-    },
-    {
-      id: 6,
-      imageUrl: '/images/Entrepreneurship.jpg',
-      title: 'Entrepreneurship',
-      description: 'Get insights and guidance on starting, funding, and scaling your own business from successful entrepreneurs.',
-      buttonText: 'Explore',
-    },
-    {
-      id: 7,
-      imageUrl: '/images/Industry Networking.jpg',
-      title: 'Industry Networking',
-      description: 'Learn effective networking strategies and connect with professionals in your target industry.',
-      buttonText: 'Explore',
-    },
-    {
-      id: 8,
-      imageUrl: '/images/Academic Guidance.jpg',
-      title: 'Academic Guidance',
-      description: 'Receive support for academic choices, study strategies, and navigating educational paths for success.',
-      buttonText: 'Explore',
-    },
-    {
-      id: 9,
-      imageUrl: '/images/Project Management.jpg',
-      title: 'Project Management',
-      description: 'Master the principles of project planning, execution, and closure with guidance from certified project managers.',
-      buttonText: 'Explore',
-    },
-    {
-      id: 10,
-      imageUrl: '/images/Personal Branding.png',
-      title: 'Personal Branding',
-      description: 'Build a strong personal brand that highlights your unique skills and value in the professional world.',
-      buttonText: 'Explore',
-    },
-    {
-      id: 11,
-      imageUrl: '/images/Career Transition.jpg',
-      title: 'Career Transition',
-      description: 'Navigate career changes smoothly with advice on identifying new opportunities and adapting to new roles.',
-      buttonText: 'Explore',
-    },
-    {
-      id: 12,
-      imageUrl: '/images/Startup Advising.png',
-      title: 'Startup Advising',
-      description: 'Receive strategic guidance for your startup, from business model development to fundraising and growth.',
-      buttonText: 'Explore',
-    },
-  ]);
+ 
 
   // Function to handle the button click and send data to backend
   const handleServiceButtonClick = async (id) => {
@@ -182,7 +100,7 @@ const Services = () => {
             imageUrl={service.imageUrl}
             title={service.title}
             description={service.description}
-            buttonText={service.buttonText}
+            buttonText="Explore"
             onButtonClick={()=>handleServiceButtonClick(service.id)} // Pass the handler to the ServiceCard
           />
         ))}

@@ -40,6 +40,7 @@
 //     </section>
 //   );
 // }
+
 import { Link } from "react-router-dom";
 import { FaUserGraduate, FaChalkboardTeacher } from "react-icons/fa";
 import About from "./About";
