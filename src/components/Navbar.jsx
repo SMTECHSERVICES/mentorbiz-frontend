@@ -346,7 +346,7 @@ const Navbar = () => {
             <li><MenuLink to="/services" onClick={closeAll}>Services</MenuLink></li>
             <li><MenuLink to="/current-event" onClick={closeAll}>Current Event</MenuLink></li>
             <li>
-              <MenuLink to="/carrer" onClick={closeAll}>Career</MenuLink>
+              <MenuLink to="/career" onClick={closeAll}>Career</MenuLink>
               {/* <button onClick={handleCarrierToggle} className="text-gray-700 font-medium flex items-center">
                 Career
                 <svg
