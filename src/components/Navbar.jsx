@@ -231,15 +231,16 @@ const Navbar = () => {
       <li><MenuLink to="/about" onClick={closeAll}>About</MenuLink></li>
       <li><MenuLink to="/services" onClick={closeAll}>Services</MenuLink></li>
       <li><MenuLink to="/current-event" onClick={closeAll}>Current Event</MenuLink></li>
+       <li><MenuLink to="/career" onClick={closeAll}>Career</MenuLink></li>
 
       {/* Career Dropdown */}
-      <li className="relative group">
-        <button
+      {/* <li className="relative group"> */}
+        {/* <button
           onClick={handleCarrierToggle}
           className="relative font-medium text-gray-700 group py-2 md:p-0 flex items-center"
         >
-          Career
-          <svg
+          Career */}
+          {/* <svg
             className={`ml-1 w-4 h-4 transform transition-transform duration-200 ${carrierDropdown ? "rotate-180" : ""}`}
             fill="none"
             stroke="currentColor"
@@ -247,11 +248,11 @@ const Navbar = () => {
             viewBox="0 0 24 24"
           >
             <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
+          </svg> */}
+        {/* </button> */}
 
         {/* Dropdown - Desktop */}
-        {carrierDropdown && (
+        {/* {carrierDropdown && (
           <ul className="absolute left-0 mt-2 w-44 bg-white border border-gray-200 rounded-lg shadow-lg z-50 md:block hidden transition-all duration-300">
             <li>
               <Link to="/internship" onClick={closeAll} className="block px-4 py-2 hover:bg-[#F3F4F6] text-sm text-gray-700">
@@ -269,8 +270,8 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
-        )}
-      </li>
+        )} */}
+      {/* </li> */}
 
       <li><MenuLink to="/contact" onClick={closeAll}>Contact</MenuLink></li>
       <li><MenuLink to="/login" onClick={closeAll}>Login</MenuLink></li>
@@ -345,7 +346,8 @@ const Navbar = () => {
             <li><MenuLink to="/services" onClick={closeAll}>Services</MenuLink></li>
             <li><MenuLink to="/current-event" onClick={closeAll}>Current Event</MenuLink></li>
             <li>
-              <button onClick={handleCarrierToggle} className="text-gray-700 font-medium flex items-center">
+              <MenuLink to="/carrer" onClick={closeAll}>Career</MenuLink>
+              {/* <button onClick={handleCarrierToggle} className="text-gray-700 font-medium flex items-center">
                 Career
                 <svg
                   className={`ml-1 w-4 h-4 transform transition-transform duration-200 ${carrierDropdown ? "rotate-180" : ""}`}
@@ -357,7 +359,7 @@ const Navbar = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              {mobileDropdown}
+              {mobileDropdown} */}
             </li>
             <li><MenuLink to="/contact" onClick={closeAll}>Contact</MenuLink></li>
             <li><MenuLink to="/login" onClick={closeAll}>Login</MenuLink></li>
