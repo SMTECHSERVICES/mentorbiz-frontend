@@ -1,9 +1,10 @@
 import axios from 'axios';
+import { server } from '../constants/api';
 
 const ExportDashboardExcel = () => {
   const handleDownload = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/admin/allDashboardData', {
+      const response = await axios.get(`${server}/admin/allDashboardData`, {
         responseType: 'blob', // Important for binary file
         withCredentials: true, // Send cookies
       });
