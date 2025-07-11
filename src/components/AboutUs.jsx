@@ -1,6 +1,6 @@
 export default function AboutUs() {
   return (
-    <div className="max-w-4xl mx-auto p-6">
+    <div className="max-w-4xl mx-auto  p-6">
       <h2 className="text-3xl font-bold mb-6">Our Mission is to Empower through Mentorship</h2>
       <div className="flex flex-col md:flex-row items-center gap-6">
         <img

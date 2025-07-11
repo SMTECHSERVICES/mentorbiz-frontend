@@ -89,7 +89,7 @@ const Services = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-100 py-8 px-4 font-inter">
+    <div className="min-h-screen bg-gradient-to-br mt-6 from-gray-50 to-blue-100 py-8 px-4 font-inter">
       <h1 className="text-4xl sm:text-5xl font-extrabold text-center text-blue-800 mb-12 mt-8">
         Our Mentorship Services
       </h1>

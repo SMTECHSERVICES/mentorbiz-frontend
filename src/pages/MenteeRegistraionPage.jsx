@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { server } from '../constants/api';
 
 const MenteeRegistrationPage = () => {
     const navigate = useNavigate();
@@ -128,12 +129,12 @@ const MenteeRegistrationPage = () => {
       formDataToSend.append('resume', formData.resume);
     }
 
-  const response =  await axios.post('http://localhost:5000/api/mentee/register', formDataToSend, {
+  const response =  await axios.post(`${server}/mentee/register`, formDataToSend, {withCredentials:true,
       headers: {
         'Content-Type': 'multipart/form-data'
       }
     });
-console.log(response)
+        localStorage.setItem("role",response?.data?.mentee.role)
     setSubmitSuccess(true);
     setFormData({
       fullName: '',

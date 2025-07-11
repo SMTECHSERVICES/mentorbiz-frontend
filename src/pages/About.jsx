@@ -56,7 +56,7 @@ import handshakeImage from '/images/handshake.jpeg';
 
 const About = () => {
   return (
-    <div className="bg-white px-6 py-12 md:py-20 md:px-20">
+    <div className="bg-white px-6 mt-4 py-12 md:py-20 md:px-20">
       {/* Existing About Section */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-16">
         {/* Left - Text Content */}

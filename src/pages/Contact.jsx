@@ -24,12 +24,12 @@ export default function ContactUs() {
   };
 
   return (
-    <section className="max-w-md mx-auto p-6">
+    <section className="max-w-md mt-2.5 mx-auto p-6">
       <h2 className="text-3xl font-bold mb-6 text-center text-blue-700">Contact Us</h2>
 
       <div className="mb-6 text-center space-y-2 text-gray-700">
-        <p>Email: <a href="mailto:support@mentorconnectbiz.com" className="text-blue-600 underline">info@mentors.ind.in</a></p>
-        <p>Phone: <a href="tel:+911234567890" className="text-blue-600 underline">+91 8383952262</a></p>
+        <p>Email: <a href="mailto:info@mentors.ind.in" className="text-blue-600 underline">info@mentors.ind.in</a></p>
+        <p>Phone: <a href="tel:+918383952262" className="text-blue-600 underline">+91 8383952262</a></p>
       </div>
 
       {submitted ? (

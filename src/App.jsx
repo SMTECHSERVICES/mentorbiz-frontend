@@ -19,6 +19,9 @@ const MenteeRegistraionPage = lazy(()=>import('./pages/MenteeRegistraionPage'));
 const LoginPage = lazy(()=>import('./pages/Login'));
 const MentorRegistraitionPage = lazy(()=>import('./pages/BecomeMentor'));
 const ServiceDetailPage = lazy(()=>import('./pages/ServiceDetail'));
+const MenteeDetailPage  = lazy(()=>import('./pages/admin/MenteeDetail'))
+const MentorsDetailPage = lazy(()=>import('./pages/admin/MentorDetail'));
+const AdminDashboardPage = lazy(()=>import('./pages/admin/Dashboard'))
 
 const CurrentJobsPage = lazy(()=>import('./pages/CurrentJobs'))
 // import MentorList from './components/MentorList';
@@ -46,6 +49,12 @@ export default function App() {
             <Route path='/jobs' element={<JobsPage />} />
              <Route path='/live-project' element={<LiveProjectPage />} />
           <Route path='/services/detail/:id' element={<ServiceDetailPage />} />
+
+
+          {/* ADMIN ROUTES */}
+          <Route path='/admin/dashboard' element={<AdminDashboardPage />} />
+          <Route path='/admin/mentees' element={<MenteeDetailPage />} />
+          <Route path='/admin/mentors' element={<MentorsDetailPage />} />
         </Routes>
       </main>
       {/* <MentorList /> */}
