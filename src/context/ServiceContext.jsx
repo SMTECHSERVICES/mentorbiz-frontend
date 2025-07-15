@@ -4,6 +4,14 @@ const ServicesContext = createContext();
 
 export const ServicesProvider = ({ children }) => {
     const [servicesData, setServicesData] = useState([
+           {
+            id: 13,
+            imageUrl: '/images/scm.webp',
+            title: 'Supply Chain Management',
+            description: 'Supply chain management (SCM) is the oversight of the entire flow of goods and services, from the origin of raw materials to the final delivery to the customer. ',
+            ExplorePoints:"	Introduction to Supply Chain,	Procurement & Vendor Management,	Operations & Plant Management,	Inventory & Warehouse Management,Costing & Budgeting in Operations,Logistics & Distribution"
+
+        },
         {
             id: 1,
             imageUrl: '/images/Career Development.jpg',

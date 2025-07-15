@@ -26,6 +26,7 @@ const MentorRegistration = () => {
   const [submitError, setSubmitError] = useState('');
 
   const mentorshipOptions = [
+    "Supply Chain Management",
     "Career Development",
     "Technical Skills",
     "Leadership Coaching",
