@@ -161,7 +161,12 @@ import { useServices } from '../context/ServiceContext'
 const ServiceDetail = () => {
   const { servicesData } = useServices();
   const { id } = useParams();
-  const serviceId = parseInt(id) || 1;
+// No parseInt
+const serviceId = id;
+
+
+
+
 
   const [serviceDetails, setServiceDetails] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -176,25 +181,28 @@ const ServiceDetail = () => {
   ];
 
   useEffect(() => {
-    setLoading(true);
-    setError(null);
-    
-    try {
-      // Find service by ID from context data
-      const service = servicesData.find(s => s.id === serviceId);
-      
-      if (service) {
-        setServiceDetails(service);
-      } else {
-        setError('Service not found.');
-      }
-    } catch (err) {
-      console.error("Failed to fetch service data:", err);
-      setError('Failed to load service details. Please try again.');
-    } finally {
-      setLoading(false);
+  setLoading(true);
+  setError(null);
+  
+  try {
+    const service = servicesData.find(s => s._id === id);
+
+    if (service) {
+      setServiceDetails(service);
+    } else {
+      setError('Service not found.');
     }
-  }, [serviceId, servicesData]);
+  } catch (err) {
+    console.error("Failed to fetch service data:", err);
+    setError('Failed to load service details. Please try again.');
+  } finally {
+    setLoading(false);
+  }
+}, [id, servicesData]);
+
+if (servicesData.length === 0) {
+  return <div>Loading services...</div>;
+}
 
   if (loading) {
     return (
@@ -259,7 +267,7 @@ const ServiceDetail = () => {
         <div className="relative">
           <div className="h-48 sm:h-64 w-full bg-gray-200 rounded-t-xl overflow-hidden">
             <img
-              src={serviceDetails.imageUrl}
+              src={serviceDetails.thumbnail}
               alt={serviceDetails.title}
               className="w-full h-full object-cover"
               onError={(e) => { 

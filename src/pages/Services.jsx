@@ -72,11 +72,21 @@ import ServiceCard from '../components/ServiceCard'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useServices } from '../context/ServiceContext'
+import { useEffect } from 'react'
+import seedCoursesToBackend from '../constants/seed'
 
 const Services = () => {
 
   const { servicesData } = useServices();
   const navigate = useNavigate();
+
+// useEffect(() => {
+//   const putData = async () => {
+//     await seedCoursesToBackend(servicesData);
+//   };
+
+//   putData(); // ← This is the missing function call
+// }, []);
  
 
   // Function to handle the button click and send data to backend
@@ -96,12 +106,12 @@ const Services = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 hover:cursor-pointer">
         {servicesData.map((service) => (
           <ServiceCard
-            key={service.id}
-            imageUrl={service.imageUrl}
+            key={service._id}
+            imageUrl={service.thumbnail}
             title={service.title}
             description={service.description}
             buttonText="Explore"
-            onButtonClick={()=>handleServiceButtonClick(service.id)} // Pass the handler to the ServiceCard
+            onButtonClick={()=>handleServiceButtonClick(service._id)} // Pass the handler to the ServiceCard
           />
         ))}
       </div>

@@ -373,9 +373,136 @@
 // export default Navbar;
 
 
+// import { useState } from "react";
+// import { Link, useNavigate } from "react-router-dom";
+// import { useServices } from "../context/ServiceContext"
+
+// const MenuLink = ({ to, children, onClick }) => (
+//   <Link
+//     to={to}
+//     onClick={onClick}
+//     className="relative font-medium text-gray-700 group py-2 md:p-0"
+//   >
+//     {children}
+//     <span
+//       className="absolute left-0 -bottom-0.5 h-0.5 w-full origin-left
+//                  scale-x-0 bg-[#465ADA] transition-transform duration-300
+//                  group-hover:scale-x-100"
+//     />
+//   </Link>
+// );
+
+// const Navbar = () => {
+//   const [open, setOpen] = useState(false);
+//   const [carrierDropdown, setCarrierDropdown] = useState(false);
+//   const { authToken, userRole, logout } = useServices(); // 🔐 get auth from context
+//   const navigate = useNavigate();
+
+//   const handleCarrierToggle = () => setCarrierDropdown(!carrierDropdown);
+//   const closeAll = () => {
+//     setOpen(false);
+//     setCarrierDropdown(false);
+//   };
+
+//   const handleLogout = () => {
+//     logout();
+//     closeAll();
+//     navigate("/"); // optional redirect
+//   };
+
+//   const commonLinks = (
+//     <>
+//       <li><MenuLink to="/" onClick={closeAll}>Home</MenuLink></li>
+//       <li><MenuLink to="/about" onClick={closeAll}>About</MenuLink></li>
+//       <li><MenuLink to="/services" onClick={closeAll}>Services</MenuLink></li>
+//       <li><MenuLink to="/current-event" onClick={closeAll}>Current Event</MenuLink></li>
+//       <li><MenuLink to="/career" onClick={closeAll}>Career</MenuLink></li>
+//       <li><MenuLink to="/contact" onClick={closeAll}>Contact</MenuLink></li>
+//     </>
+//   );
+
+//   const authLink = authToken ? (
+//     <li>
+//       <button onClick={handleLogout} className="text-red-600 font-medium">
+//         Logout
+//       </button>
+//     </li>
+//   ) : (
+//     <li><MenuLink to="/login" onClick={closeAll}>Login</MenuLink></li>
+//   );
+
+//   const adminLinks = (
+//     <>
+//       <li><MenuLink to="/admin/dashboard" onClick={closeAll}>Dashboard</MenuLink></li>
+//       <li><MenuLink to="/admin/mentors" onClick={closeAll}>Manage Mentors</MenuLink></li>
+//       <li><MenuLink to="/admin/mentees" onClick={closeAll}>Manage Mentees</MenuLink></li>
+//     </>
+//   );
+
+//   return (
+//     <nav className="bg-white shadow-md fixed inset-x-0 top-0 z-50">
+//       <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
+//         {/* Logo and Sponsor */}
+//         <div className="flex flex-col items-start">
+//           <Link to="/" className="flex items-center text-2xl font-bold" style={{ color: "#465ADA" }}>
+//             <img src="/images/fav_icon.png" alt="logo" className="h-12 w-12 mr-2" />
+//             MentorConnect
+//           </Link>
+//           <div className="flex items-center mt-1 ml-15 space-x-2 text-xs text-gray-500">
+//             <span>Sponsored by:</span>
+//             <a href="https://www.iamr.ac.in" target="_blank" rel="noopener noreferrer">
+//               <img src="/images/logo2.jpg" alt="Sponsor 1" className="h-6 w-auto object-contain" />
+//             </a>
+//             <a href="https://vrindustries.org.in" target="_blank" rel="noopener noreferrer">
+//               <img src="/images/logo1.png" alt="Sponsor 2" className="h-6 w-auto object-contain" />
+//             </a>
+//           </div>
+//         </div>
+
+//         {/* Hamburger Menu */}
+//         <button
+//           onClick={() => setOpen(!open)}
+//           className="md:hidden p-2 rounded focus:outline-none focus:ring-2 focus:ring-[#465ADA]"
+//           aria-label="Toggle navigation"
+//         >
+//           {open ? (
+//             <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
+//               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+//             </svg>
+//           ) : (
+//             <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
+//               <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+//             </svg>
+//           )}
+//         </button>
+
+//         {/* Desktop Nav */}
+//         <ul className="hidden md:flex gap-8 text-sm">
+//           {userRole === 'admin' ? adminLinks : commonLinks}
+//           {authLink}
+//         </ul>
+//       </div>
+
+//       {/* Mobile Nav */}
+//       {open && (
+//         <div className="md:hidden bg-white shadow-lg border-t border-gray-100">
+//           <ul className="flex flex-col px-6 py-4 space-y-2">
+//             {(userRole === 'admin' ? adminLinks : commonLinks)}
+//             {authLink}
+//           </ul>
+//         </div>
+//       )}
+//     </nav>
+//   );
+// };
+
+// export default Navbar;
+
+
+
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useServices } from "../context/ServiceContext"
+import { useServices } from "../context/ServiceContext";
 
 const MenuLink = ({ to, children, onClick }) => (
   <Link
@@ -394,22 +521,18 @@ const MenuLink = ({ to, children, onClick }) => (
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  const [carrierDropdown, setCarrierDropdown] = useState(false);
-  const { authToken, userRole, logout } = useServices(); // 🔐 get auth from context
+  const { authToken, userRole, logout } = useServices();
   const navigate = useNavigate();
 
-  const handleCarrierToggle = () => setCarrierDropdown(!carrierDropdown);
-  const closeAll = () => {
-    setOpen(false);
-    setCarrierDropdown(false);
-  };
+  const closeAll = () => setOpen(false);
 
   const handleLogout = () => {
     logout();
     closeAll();
-    navigate("/"); // optional redirect
+    navigate("/"); // Redirect to home
   };
 
+  // Default navigation
   const commonLinks = (
     <>
       <li><MenuLink to="/" onClick={closeAll}>Home</MenuLink></li>
@@ -421,16 +544,7 @@ const Navbar = () => {
     </>
   );
 
-  const authLink = authToken ? (
-    <li>
-      <button onClick={handleLogout} className="text-red-600 font-medium">
-        Logout
-      </button>
-    </li>
-  ) : (
-    <li><MenuLink to="/login" onClick={closeAll}>Login</MenuLink></li>
-  );
-
+  // Admin Navigation
   const adminLinks = (
     <>
       <li><MenuLink to="/admin/dashboard" onClick={closeAll}>Dashboard</MenuLink></li>
@@ -438,6 +552,34 @@ const Navbar = () => {
       <li><MenuLink to="/admin/mentees" onClick={closeAll}>Manage Mentees</MenuLink></li>
     </>
   );
+
+  // Mentor Navigation
+  const mentorLinks = (
+    <>
+      <li><MenuLink to="/mentor/dashboard" onClick={closeAll}>Dashboard</MenuLink></li>
+      <li><MenuLink to="/mentor/mentees" onClick={closeAll}>Your Mentees</MenuLink></li>
+      <li><MenuLink to="/mentor/courses" onClick={closeAll}>Your Courses</MenuLink></li>
+      {/* <li><MenuLink to="/mentor/profile" onClick={closeAll}>Update Profile</MenuLink></li> */}
+    </>
+  );
+
+  // Auth link
+  const authLink = authToken ? (
+    <li>
+      <button onClick={handleLogout} className="text-red-600 cursor-pointer font-medium">
+        Logout
+      </button>
+    </li>
+  ) : (
+    <li><MenuLink to="/login" onClick={closeAll}>Login</MenuLink></li>
+  );
+
+  // Get nav links based on role
+  const getNavLinks = () => {
+    if (userRole === "admin") return adminLinks;
+    if (userRole === "mentor") return mentorLinks;
+    return commonLinks;
+  };
 
   return (
     <nav className="bg-white shadow-md fixed inset-x-0 top-0 z-50">
@@ -459,7 +601,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Hamburger Menu */}
+        {/* Hamburger */}
         <button
           onClick={() => setOpen(!open)}
           className="md:hidden p-2 rounded focus:outline-none focus:ring-2 focus:ring-[#465ADA]"
@@ -477,8 +619,8 @@ const Navbar = () => {
         </button>
 
         {/* Desktop Nav */}
-        <ul className="hidden md:flex gap-8 text-sm">
-          {userRole === 'admin' ? adminLinks : commonLinks}
+        <ul className="hidden md:flex gap-8 text-sm items-center">
+          {getNavLinks()}
           {authLink}
         </ul>
       </div>
@@ -487,7 +629,7 @@ const Navbar = () => {
       {open && (
         <div className="md:hidden bg-white shadow-lg border-t border-gray-100">
           <ul className="flex flex-col px-6 py-4 space-y-2">
-            {(userRole === 'admin' ? adminLinks : commonLinks)}
+            {getNavLinks()}
             {authLink}
           </ul>
         </div>

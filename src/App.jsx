@@ -1,4 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
+import seedCoursesToBackend from './constants/seed';
+import { useServices } from './context/ServiceContext';
 import { lazy } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -15,19 +17,23 @@ import JobsPage from './pages/Jobs';
 import LiveProjectPage from './pages/LiveProject';
 import CurrentEventPage from './pages/CurrentEvent';
 
+
 const MenteeRegistraionPage = lazy(()=>import('./pages/MenteeRegistraionPage'));
 const LoginPage = lazy(()=>import('./pages/Login'));
 const MentorRegistraitionPage = lazy(()=>import('./pages/BecomeMentor'));
 const ServiceDetailPage = lazy(()=>import('./pages/ServiceDetail'));
 const MenteeDetailPage  = lazy(()=>import('./pages/admin/MenteeDetail'))
 const MentorsDetailPage = lazy(()=>import('./pages/admin/MentorDetail'));
-const AdminDashboardPage = lazy(()=>import('./pages/admin/Dashboard'))
+const AdminDashboardPage = lazy(()=>import('./pages/admin/Dashboard'));
+const MentorDashboardPage = lazy(()=>import('./pages/mentor/MentorDashboard'))
+const UpdateMentorProfilePage = lazy(()=>import('./pages/mentor/UpdateProfile'))
 
 const CurrentJobsPage = lazy(()=>import('./pages/CurrentJobs'))
 // import MentorList from './components/MentorList';
 
 
 export default function App() {
+ 
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -49,6 +55,8 @@ export default function App() {
             <Route path='/jobs' element={<JobsPage />} />
              <Route path='/live-project' element={<LiveProjectPage />} />
           <Route path='/services/detail/:id' element={<ServiceDetailPage />} />
+           <Route path='/mentor/dashboard' element={<MentorDashboardPage />} />
+           <Route path='/mentor/profile' element={<UpdateMentorProfilePage />} />
 
 
           {/* ADMIN ROUTES */}

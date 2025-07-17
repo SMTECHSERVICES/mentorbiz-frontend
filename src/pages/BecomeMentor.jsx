@@ -3,9 +3,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { server } from '../constants/api';
+import { useServices } from '../context/ServiceContext';
+import { useNavigate } from 'react-router-dom';
 // import axios from 'axios'; // axios import is commented out for self-contained execution in Canvas
 
 const MentorRegistration = () => {
+    const {  login} = useServices(); // 🔐 get auth from context
+    const navigate = useNavigate()
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -168,8 +172,10 @@ const MentorRegistration = () => {
     'Content-Type': 'multipart/form-data',
   },});
       console.log(respnse)
-      localStorage.setItem("role",respnse?.data?.mentor.role);
-      localStorage.setItem('token',respnse?.data?.token)
+      login(respnse?.data?.token,respnse?.data?.mentor.role)
+      navigate("/mentor/dashboard")
+      // localStorage.setItem("role",respnse?.data?.mentor.role);
+      // localStorage.setItem('token',respnse?.data?.token)
 
 
       // Simulate API call

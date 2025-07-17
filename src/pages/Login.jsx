@@ -42,9 +42,10 @@ const Login = () => {
 
       }else{
       const respnse = await axios.post(`${server}/${userType}/login`,{email,password},{withCredentials:true});
-        localStorage.setItem("role",respnse.data.role);
-        localStorage.setItem("token",respnse?.data?.token);
-        navigate('/career')
+      login(respnse?.data?.token,respnse.data.role)
+        // localStorage.setItem("role",respnse.data.role);
+        // localStorage.setItem("token",respnse?.data?.token);
+        navigate(`/${userType}/dashboard`)
       }
 
      
