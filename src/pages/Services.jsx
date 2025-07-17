@@ -78,6 +78,7 @@ import seedCoursesToBackend from '../constants/seed'
 const Services = () => {
 
   const { servicesData } = useServices();
+  console.log(servicesData);
   const navigate = useNavigate();
 
 // useEffect(() => {

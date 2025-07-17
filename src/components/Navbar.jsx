@@ -562,6 +562,14 @@ const Navbar = () => {
       {/* <li><MenuLink to="/mentor/profile" onClick={closeAll}>Update Profile</MenuLink></li> */}
     </>
   );
+  const menteeLinks = (
+     <>
+      <li><MenuLink to="/mentee/dashboard" onClick={closeAll}>Dashboard</MenuLink></li>
+      <li><MenuLink to="/mentee/mentors" onClick={closeAll}>Your mentors</MenuLink></li>
+      <li><MenuLink to="/mentee/courses" onClick={closeAll}>Your Courses</MenuLink></li>
+      {/* <li><MenuLink to="/mentor/profile" onClick={closeAll}>Update Profile</MenuLink></li> */}
+    </>
+  )
 
   // Auth link
   const authLink = authToken ? (
@@ -578,6 +586,7 @@ const Navbar = () => {
   const getNavLinks = () => {
     if (userRole === "admin") return adminLinks;
     if (userRole === "mentor") return mentorLinks;
+      if (userRole === "mentee") return menteeLinks;
     return commonLinks;
   };
 
