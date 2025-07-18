@@ -216,7 +216,7 @@ const MentorRegistration = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 mt-5 py-8 px-4 font-inter text-gray-800">
+    <div className="min-h-screen  bg-gradient-to-br from-blue-50 to-indigo-100 mt-10 py-8 px-4 font-inter text-gray-800">
       <div className="max-w-3xl mx-auto">
         {/* <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-indigo-800 mb-2">Mentor Registration</h1>

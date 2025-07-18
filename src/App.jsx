@@ -27,7 +27,8 @@ const MentorsDetailPage = lazy(()=>import('./pages/admin/MentorDetail'));
 const AdminDashboardPage = lazy(()=>import('./pages/admin/Dashboard'));
 const MentorDashboardPage = lazy(()=>import('./pages/mentor/MentorDashboard'))
 const UpdateMentorProfilePage = lazy(()=>import('./pages/mentor/UpdateProfile'));
-const MenteeDashboardPage = lazy(()=>import('./pages/mentee/MenteeDashboard'))
+const MenteeDashboardPage = lazy(()=>import('./pages/mentee/MenteeDashboard'));
+const MentorDetailPageforStudent = lazy(()=>import('./pages/mentor/MentorDetails'))
 
 const CurrentJobsPage = lazy(()=>import('./pages/CurrentJobs'))
 // import MentorList from './components/MentorList';
@@ -63,6 +64,7 @@ export default function App() {
 
            <Route path='/mentor/dashboard' element={<MentorDashboardPage />} />
            <Route path='/mentor/profile' element={<UpdateMentorProfilePage />} />
+           <Route path='/mentor/detail/:id' element={<MentorDetailPageforStudent />} />
 
 
           {/* ADMIN ROUTES */}
