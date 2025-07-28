@@ -124,7 +124,7 @@ const Events = () => {
                         <div className="text-sm font-medium text-gray-900">{event.title}</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {new Date(event.createdAt).toLocaleDateString()}
+                        {new Date(event.seminarDate).toLocaleDateString()}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span 
@@ -136,14 +136,15 @@ const Events = () => {
                           {event.isPublish ? 'Published' : 'Unpublished'}
                         </span>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <button className="text-blue-600 hover:text-blue-900 mr-3">
-                          <FaEdit />
-                        </button>
-                        <button className="text-red-600 hover:text-red-900">
-                          <FaTrash />
-                        </button>
-                      </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+  <button 
+    className="text-indigo-600 hover:text-indigo-900"
+    onClick={() => navigate(`/admin/event-detail/${event._id}`)}
+  >
+    View Details
+  </button>
+</td>
+
                     </tr>
                   ))
                 ) : (

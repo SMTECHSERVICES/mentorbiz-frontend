@@ -33,10 +33,13 @@ const MentorDetailPageforStudent = lazy(()=>import('./pages/mentor/MentorDetails
 const MentorsAvailableForMenteePage = lazy(()=>import('./pages/mentee/YourMentor'));
 const RequestMentorPage = lazy(()=>import('./pages/RequestMentor'));
 
+const AdminMenteeDetailPage = lazy(()=>import('./pages/admin/AdminMenteeDetail'))
+
 const EventsPage = lazy(()=>import('./pages/admin/Events'));
 const AddEventsPage = lazy(()=>import('./pages/admin/AddEvents'))
 
 const CurrentJobsPage = lazy(()=>import('./pages/CurrentJobs'))
+const EventDetailPage = lazy(()=>import('./pages/admin/EventDetail'))
 // import MentorList from './components/MentorList';
 
 
@@ -66,6 +69,7 @@ export default function App() {
              <Route path='/Clients' element={<LiveProjectPage />} />
           <Route path='/services/detail/:id' element={<ServiceDetailPage />} />
 
+
           {/* {MENTEE ROUTES} */}
 
           <Route path='/mentee/dashboard' element={<MenteeDashboardPage />} />
@@ -82,7 +86,9 @@ export default function App() {
           <Route path='/admin/mentees' element={<MenteeDetailPage />} />
           <Route path='/admin/mentors' element={<MentorsDetailPage />} />
           <Route path='/admin/events' element={<EventsPage />} />
-            <Route path='/admin/add-event' element={<AddEventsPage />} />
+          <Route path='/admin/add-event' element={<AddEventsPage />} />
+        <Route path='/admin/event-detail/:id' element={<EventDetailPage />} />
+        <Route path='admin/mentee-detail/:id' element={<AdminMenteeDetailPage />} />
         </Routes>
       </main>
       {/* <MentorList /> */}

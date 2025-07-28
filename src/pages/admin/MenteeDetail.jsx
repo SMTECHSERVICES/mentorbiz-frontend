@@ -11,6 +11,7 @@ import {
   FaFilePdf,
   FaDownload
 } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const MenteeDetail = () => {
   const [mentees, setMentees] = useState([]);
@@ -195,6 +196,10 @@ const MenteeDetail = () => {
                     View Resume
                     <FaDownload className="ml-2 text-sm" />
                   </a>
+                </div>
+                 <div className="mt-6">
+                  
+                 <Link className='text-blue-500' to={`/admin/mentee-detail/${mentee._id}`}>View Detail</Link>
                 </div>
               </div>
             </div>

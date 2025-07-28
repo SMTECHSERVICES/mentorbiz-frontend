@@ -3,14 +3,19 @@ import axios from 'axios';
 import { server } from '../../constants/api';
 import { FaPlus, FaSpinner, FaArrowLeft } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-hot-toast'; // ✅ import toast
 
 const AddEvents = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: '',
     description: '',
-    isPublish: false
+    isPublish: false,
+    seminarDate: '',
+    where: '',
+    timing: ''
   });
+
   const [thumbnail, setThumbnail] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -33,22 +38,20 @@ const AddEvents = () => {
     setError('');
     setSuccess('');
 
-    if (!formData.title || !formData.description) {
-      setError('Title and description are required');
+    const { title, description, seminarDate, where } = formData;
+
+    if (!title || !description || !seminarDate || !where) {
+      setError('Please fill all required fields marked with *');
       return;
     }
 
     try {
       setLoading(true);
-      
       const formDataToSend = new FormData();
-      formDataToSend.append('title', formData.title);
-      formDataToSend.append('description', formData.description);
-      formDataToSend.append('isPublish', formData.isPublish);
-      
-      if (thumbnail) {
-        formDataToSend.append('thumbnail', thumbnail);
-      }
+      Object.entries(formData).forEach(([key, val]) => {
+        formDataToSend.append(key, val);
+      });
+      if (thumbnail) formDataToSend.append('thumbnail', thumbnail);
 
       const response = await axios.post(
         `${server}/admin/addNewEvent`,
@@ -61,15 +64,25 @@ const AddEvents = () => {
         }
       );
 
-      if (response.status === 200) {
+      if (response.status === 201) {
+        toast.success(response.data.message || "New event added succesfully");
         setSuccess('Event added successfully!');
-        setFormData({ title: '', description: '', isPublish: false });
+        setFormData({
+          title: '',
+          description: '',
+          isPublish: false,
+          seminarDate: '',
+          where: '',
+          timing: ''
+        });
         setThumbnail(null);
-        // Optionally redirect after success
-        // navigate('/events');
+        // Optional: Redirect after 2 seconds
+        setTimeout(() => navigate('/admin/events'), 2000);
       }
     } catch (err) {
       console.error('Error adding event:', err);
+       const msg = error?.response?.data?.message || 'Failed to send mentor request';
+      toast.error(msg);
       setError(err.response?.data?.message || 'Failed to add event. Please try again.');
     } finally {
       setLoading(false);
@@ -79,7 +92,7 @@ const AddEvents = () => {
   return (
     <div className="container mx-auto px-4 py-8 max-w-3xl">
       <div className="mb-6">
-        <button 
+        <button
           onClick={() => navigate(-1)}
           className="flex items-center text-blue-600 hover:text-blue-800"
         >
@@ -89,13 +102,13 @@ const AddEvents = () => {
 
       <div className="bg-white rounded-lg shadow-md p-6">
         <h2 className="text-2xl font-bold text-gray-800 mb-6">Add New Event</h2>
-        
+
         {error && (
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
             {error}
           </div>
         )}
-        
+
         {success && (
           <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6">
             {success}
@@ -103,6 +116,7 @@ const AddEvents = () => {
         )}
 
         <form onSubmit={handleSubmit}>
+          {/* Title */}
           <div className="mb-4">
             <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1">
               Event Title *
@@ -113,12 +127,13 @@ const AddEvents = () => {
               name="title"
               value={formData.title}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md"
               placeholder="Enter event title"
               disabled={loading}
             />
           </div>
 
+          {/* Description */}
           <div className="mb-4">
             <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
               Description *
@@ -129,12 +144,63 @@ const AddEvents = () => {
               value={formData.description}
               onChange={handleChange}
               rows={4}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md"
               placeholder="Enter event description"
               disabled={loading}
             ></textarea>
           </div>
 
+          {/* Seminar Date */}
+          <div className="mb-4">
+            <label htmlFor="seminarDate" className="block text-sm font-medium text-gray-700 mb-1">
+              Seminar Date *
+            </label>
+            <input
+              type="date"
+              id="seminarDate"
+              name="seminarDate"
+              value={formData.seminarDate}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md"
+              disabled={loading}
+            />
+          </div>
+
+          {/* Where */}
+          <div className="mb-4">
+            <label htmlFor="where" className="block text-sm font-medium text-gray-700 mb-1">
+              Event Location *
+            </label>
+            <input
+              type="text"
+              id="where"
+              name="where"
+              value={formData.where}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md"
+              placeholder="e.g., Zoom / Delhi Hall A"
+              disabled={loading}
+            />
+          </div>
+
+          {/* Timing */}
+          <div className="mb-4">
+            <label htmlFor="timing" className="block text-sm font-medium text-gray-700 mb-1">
+              Event Timing
+            </label>
+            <input
+              type="text"
+              id="timing"
+              name="timing"
+              value={formData.timing}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md"
+              placeholder="e.g., 9:00 AM - 5:00 PM"
+              disabled={loading}
+            />
+          </div>
+
+          {/* Thumbnail Upload */}
           <div className="mb-4">
             <label htmlFor="thumbnail" className="block text-sm font-medium text-gray-700 mb-1">
               Thumbnail Image
@@ -144,8 +210,8 @@ const AddEvents = () => {
               id="thumbnail"
               name="thumbnail"
               onChange={handleFileChange}
-              className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
               accept="image/*"
+              className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
               disabled={loading}
             />
             {thumbnail && (
@@ -155,6 +221,7 @@ const AddEvents = () => {
             )}
           </div>
 
+          {/* Publish Checkbox */}
           <div className="mb-6 flex items-center">
             <input
               type="checkbox"
@@ -162,7 +229,7 @@ const AddEvents = () => {
               name="isPublish"
               checked={formData.isPublish}
               onChange={handleChange}
-              className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+              className="h-4 w-4 text-blue-600 border-gray-300 rounded"
               disabled={loading}
             />
             <label htmlFor="isPublish" className="ml-2 block text-sm text-gray-700">
@@ -170,6 +237,7 @@ const AddEvents = () => {
             </label>
           </div>
 
+          {/* Submit Button */}
           <div className="flex justify-end">
             <button
               type="submit"
