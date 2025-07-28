@@ -33,7 +33,7 @@ const Home = () => {
             className="flex items-center gap-2 bg-[#FF3366] hover:bg-[#e62d5b] text-white font-semibold px-6 py-3 rounded-lg transition"
           >
             <FaUserGraduate className="text-xl" />
-            Mentee Registration
+            Student Registration
           </Link>
           <Link
             to="/mentor-registration"

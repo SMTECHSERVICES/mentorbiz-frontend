@@ -41,8 +41,8 @@ const Login = () => {
         }
 
       }else{
-      const respnse = await axios.post(`${server}/${userType}/login`,{email,password},{withCredentials:true});
-      login(respnse?.data?.token,respnse.data.role)
+      const response = await axios.post(`${server}/${userType}/login`,{email,password},{withCredentials:true});
+      login(response?.data?.token,response.data.role)
         // localStorage.setItem("role",respnse.data.role);
         // localStorage.setItem("token",respnse?.data?.token);
         navigate(`/${userType}/dashboard`)
@@ -73,7 +73,7 @@ const Login = () => {
         <div className="bg-white rounded-xl shadow-md overflow-hidden mb-6">
           <div className="flex">
             {[
-              { label: 'Mentee Login', value: 'mentee', icon: <FaUserGraduate className="h-5 w-5" /> },
+              { label: 'Student Login', value: 'mentee', icon: <FaUserGraduate className="h-5 w-5" /> },
               { label: 'Mentor Login', value: 'mentor', icon: <FaChalkboardTeacher className="h-5 w-5" /> },
               { label: 'Admin Login', value: 'admin', icon: <FaUserShield className="h-5 w-5" /> },
             ].map(({ label, value, icon }) => (
@@ -204,7 +204,7 @@ const Login = () => {
                   className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
                   <FaUserGraduate className="-ml-1 mr-2 h-5 w-5" />
-                  Mentee
+                  Student
                 </Link>
                 <Link
                   to="/mentor-registration"

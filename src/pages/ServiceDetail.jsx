@@ -118,11 +118,11 @@ const ServiceDetail = () => {
         </div>
 
         <div className="p-6 sm:p-8 lg:p-10">
-          <div className="sticky bottom-4 z-10 sm:static mb-8 sm:mb-10">
+          {/* <div className="sticky bottom-4 z-10 sm:static mb-8 sm:mb-10">
             <button className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 text-lg sm:text-base">
               Enroll Now
             </button>
-          </div>
+          </div> */}
 
           {/* Explore Points */}
           <section className="mb-10">
@@ -269,12 +269,12 @@ const ServiceDetail = () => {
 </section>
 
           {/* Enroll CTA */}
-          <div className="mt-12 text-center">
+          {/* <div className="mt-12 text-center">
             <button className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-bold py-4 px-12 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-lg">
               Enroll in {serviceDetails.title}
             </button>
             <p className="text-gray-600 mt-4 text-sm">Start your learning journey today</p>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

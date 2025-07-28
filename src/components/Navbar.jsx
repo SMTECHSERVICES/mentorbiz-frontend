@@ -538,7 +538,8 @@ const Navbar = () => {
       <li><MenuLink to="/" onClick={closeAll}>Home</MenuLink></li>
       <li><MenuLink to="/about" onClick={closeAll}>About</MenuLink></li>
       <li><MenuLink to="/services" onClick={closeAll}>Services</MenuLink></li>
-      <li><MenuLink to="/current-event" onClick={closeAll}>Current Event</MenuLink></li>
+      <li><MenuLink to="/current-event" onClick={closeAll}><span className="font-bold text-[#F72585] animate-pulse hover:transition-transform duration-300">Current Event</span></MenuLink></li>
+       <li><MenuLink to="/our-clients" onClick={closeAll}>Clients</MenuLink></li>
       <li><MenuLink to="/career" onClick={closeAll}>Career</MenuLink></li>
       <li><MenuLink to="/contact" onClick={closeAll}>Contact</MenuLink></li>
     </>
@@ -550,6 +551,7 @@ const Navbar = () => {
       <li><MenuLink to="/admin/dashboard" onClick={closeAll}>Dashboard</MenuLink></li>
       <li><MenuLink to="/admin/mentors" onClick={closeAll}>Manage Mentors</MenuLink></li>
       <li><MenuLink to="/admin/mentees" onClick={closeAll}>Manage Mentees</MenuLink></li>
+      <li><MenuLink to="/admin/events" onClick={closeAll}>Add Events</MenuLink></li>
     </>
   );
 
@@ -566,7 +568,9 @@ const Navbar = () => {
      <>
       <li><MenuLink to="/mentee/dashboard" onClick={closeAll}>Dashboard</MenuLink></li>
       <li><MenuLink to="/mentee/mentors" onClick={closeAll}>Your mentors</MenuLink></li>
+      <li><MenuLink to="/services" onClick={closeAll}>Services</MenuLink></li>
       <li><MenuLink to="/mentee/courses" onClick={closeAll}>Your Courses</MenuLink></li>
+       <li><MenuLink to="/current-event" onClick={closeAll}><span className="font-bold text-[#F72585] animate-pulse hover:transition-transform duration-300">Current Event</span></MenuLink></li>
       {/* <li><MenuLink to="/mentor/profile" onClick={closeAll}>Update Profile</MenuLink></li> */}
     </>
   )

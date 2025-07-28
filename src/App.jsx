@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import seedCoursesToBackend from './constants/seed';
 import { useServices } from './context/ServiceContext';
+import { Toaster } from 'react-hot-toast';
 import { lazy } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -28,7 +29,12 @@ const AdminDashboardPage = lazy(()=>import('./pages/admin/Dashboard'));
 const MentorDashboardPage = lazy(()=>import('./pages/mentor/MentorDashboard'))
 const UpdateMentorProfilePage = lazy(()=>import('./pages/mentor/UpdateProfile'));
 const MenteeDashboardPage = lazy(()=>import('./pages/mentee/MenteeDashboard'));
-const MentorDetailPageforStudent = lazy(()=>import('./pages/mentor/MentorDetails'))
+const MentorDetailPageforStudent = lazy(()=>import('./pages/mentor/MentorDetails'));
+const MentorsAvailableForMenteePage = lazy(()=>import('./pages/mentee/YourMentor'));
+const RequestMentorPage = lazy(()=>import('./pages/RequestMentor'));
+
+const EventsPage = lazy(()=>import('./pages/admin/Events'));
+const AddEventsPage = lazy(()=>import('./pages/admin/AddEvents'))
 
 const CurrentJobsPage = lazy(()=>import('./pages/CurrentJobs'))
 // import MentorList from './components/MentorList';
@@ -38,6 +44,7 @@ export default function App() {
  
   return (
     <div className="flex flex-col min-h-screen">
+       <Toaster position="top-right" />
       <Navbar />
       <main className="flex-grow">
         <Routes>
@@ -56,11 +63,14 @@ export default function App() {
            <Route path='/internship' element={<InternshipPage />} />
             <Route path='/jobs' element={<JobsPage />} />
              <Route path='/live-project' element={<LiveProjectPage />} />
+             <Route path='/Clients' element={<LiveProjectPage />} />
           <Route path='/services/detail/:id' element={<ServiceDetailPage />} />
 
           {/* {MENTEE ROUTES} */}
 
           <Route path='/mentee/dashboard' element={<MenteeDashboardPage />} />
+          <Route path='/mentee/mentors' element={<MentorsAvailableForMenteePage />} />
+          <Route path='/booking/:id' element={<RequestMentorPage />} />
 
            <Route path='/mentor/dashboard' element={<MentorDashboardPage />} />
            <Route path='/mentor/profile' element={<UpdateMentorProfilePage />} />
@@ -71,6 +81,8 @@ export default function App() {
           <Route path='/admin/dashboard' element={<AdminDashboardPage />} />
           <Route path='/admin/mentees' element={<MenteeDetailPage />} />
           <Route path='/admin/mentors' element={<MentorsDetailPage />} />
+          <Route path='/admin/events' element={<EventsPage />} />
+            <Route path='/admin/add-event' element={<AddEventsPage />} />
         </Routes>
       </main>
       {/* <MentorList /> */}
