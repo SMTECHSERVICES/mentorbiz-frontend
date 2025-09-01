@@ -1,9 +1,7 @@
-
-
 import { Link } from "react-router-dom";
 import { FaUserGraduate, FaChalkboardTeacher } from "react-icons/fa";
 import About from "./About";
-import hero from '/images/homebanner.jpg'
+// import hero from '/images/homebanner.jpg'
 import WhyChooseUs from "../components/WhyChooseUs";
 import Services from "./Services";
 
@@ -11,9 +9,9 @@ const Home = () => {
   return (
     <>
     <section
-    
-      className="bg-cover bg-center bg-no-repeat relative h-screen flex items-center"
-      style={{ backgroundImage: `url(${hero})` }}
+      className="bg-gradient-to-r from-blue-500 min-h-screen flex items-center justify-center px-6 py-20"
+      // className="bg-cover bg-center bg-no-repeat relative h-screen flex items-center"
+      // style={{ backgroundImage: `url(${hero})` }}
     >
       {/* Overlay */}
       <div className="absolute inset-0 bg-[white]/60 bg-opacity-90"></div>
