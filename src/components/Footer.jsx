@@ -117,10 +117,10 @@ export default function Footer() {
         <div className="mb-6 md:mb-0 text-center md:text-left">
           <h3 className="text-xl font-bold text-white">Mentors India</h3>
 
-          <address className="not-italic text-sm leading-relaxed mt-1">
+          {/* <address className="not-italic text-sm leading-relaxed mt-1">
             Plot No. 46, Harfala Road, Opp. Petrol Pump,<br />
             Sikari, Ballabgarh, Haryana&nbsp;-&nbsp;121004
-          </address>
+          </address> */}
 
           <p className="text-xs mt-2">
             © {new Date().getFullYear()} All rights reserved. &nbsp;|&nbsp;

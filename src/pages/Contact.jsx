@@ -27,10 +27,10 @@ export default function ContactUs() {
     <section className="max-w-md mt-2.5 mx-auto p-6">
       <h2 className="text-3xl font-bold mb-6 text-center text-blue-700">Contact Us</h2>
 
-      <div className="mb-6 text-center space-y-2 text-gray-700">
+      {/* <div className="mb-6 text-center space-y-2 text-gray-700">
         <p>Email: <a href="mailto:info@mentors.ind.in" className="text-blue-600 underline">info@mentors.ind.in</a></p>
         <p>Phone: <a href="tel:+918383952262" className="text-blue-600 underline">+91 8383952262</a></p>
-      </div>
+      </div> */}
 
       {submitted ? (
         <p className="text-green-600 font-semibold text-center">
