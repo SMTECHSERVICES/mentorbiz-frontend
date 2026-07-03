@@ -603,7 +603,7 @@ const Navbar = () => {
             <img src="/images/fav_icon.png" alt="logo" className="h-12 w-12 mr-2" />
             MentorConnect
           </Link>
-          <div className="flex items-center mt-1 ml-15 space-x-2 text-xs text-gray-500">
+          {/* //<div className="flex items-center mt-1 ml-15 space-x-2 text-xs text-gray-500">
             <span>Sponsored by:</span>
             <a href="https://www.iamr.ac.in" target="_blank" rel="noopener noreferrer">
               <img src="/images/logo2.jpg" alt="Sponsor 1" className="h-6 w-auto object-contain" />
@@ -611,7 +611,7 @@ const Navbar = () => {
             <a href="https://vrindustries.org.in" target="_blank" rel="noopener noreferrer">
               <img src="/images/logo1.png" alt="Sponsor 2" className="h-6 w-auto object-contain" />
             </a>
-          </div>
+          </div>// */}
         </div>
 
         {/* Hamburger */}

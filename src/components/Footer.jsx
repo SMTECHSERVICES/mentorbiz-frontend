@@ -142,7 +142,7 @@ export default function Footer() {
         </div>
 
         {/* Middle Section: Sponsors */}
-        <div className="mb-6 md:mb-0 text-center">
+        {/* <div className="mb-6 md:mb-0 text-center">
           <p className="text-sm mb-2 text-gray-400">Sponsored by:</p>
           <div className="flex items-center justify-center space-x-4">
           <a href="https://www.iamr.ac.in" target="_blank">
@@ -160,7 +160,7 @@ export default function Footer() {
             />
             </a>
           </div>
-        </div>
+        </div> */}
 
         {/* Right Section: Social Icons */}
         <div className="flex space-x-4">
