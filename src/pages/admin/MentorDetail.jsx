@@ -11,7 +11,8 @@ import {
   FaDownload,
   FaStar,
   FaUser,
-  FaGraduationCap
+  FaGraduationCap,
+  FaTrash
 } from 'react-icons/fa';
 
 const MentorDetail = () => {
@@ -21,6 +22,18 @@ const MentorDetail = () => {
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterSpecialty, setFilterSpecialty] = useState('all');
+
+  const handleDeleteMentor = async (id, name) => {
+    if (window.confirm(`Are you sure you want to delete mentor "${name}"?`)) {
+      try {
+        await axios.delete(`${server}/admin/deleteMentor/${id}`, { withCredentials: true });
+        setMentors(prev => prev.filter(m => m._id !== id));
+        setFilteredMentors(prev => prev.filter(m => m._id !== id));
+      } catch (err) {
+        alert(err.response?.data?.message || 'Failed to delete mentor');
+      }
+    }
+  };
   
   // Get unique specialties for filter dropdown
   const specialties = [...new Set(
@@ -205,15 +218,25 @@ const MentorDetail = () => {
                       </div>
                     </div>
                     
-                    <a 
-                      href={mentor.resume} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center px-4 py-2 bg-white border border-blue-500 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors whitespace-nowrap"
-                    >
-                      <FaFilePdf className="mr-2" />
-                      Resume
-                    </a>
+                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+                      <a 
+                        href={mentor.resume} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center px-4 py-2 bg-white border border-blue-500 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors whitespace-nowrap text-sm font-medium"
+                      >
+                        <FaFilePdf className="mr-2" />
+                        Resume
+                      </a>
+                      <button
+                        onClick={() => handleDeleteMentor(mentor._id, mentor.fullName)}
+                        className="inline-flex items-center justify-center px-3 py-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-100 transition-colors whitespace-nowrap text-sm font-medium"
+                        title="Delete Mentor"
+                      >
+                        <FaTrash className="mr-1.5" />
+                        Delete
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

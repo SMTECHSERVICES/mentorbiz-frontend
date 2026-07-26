@@ -11,13 +11,44 @@ import {
   FaPhone, 
   FaBriefcase,
   FaFilePdf,
-  FaDownload
+  FaDownload,
+  FaTrash
 } from 'react-icons/fa';
 
 const Dashboard = () => {
   const [dashboardData, setDashboardData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const handleDeleteMentor = async (id, name) => {
+    if (window.confirm(`Are you sure you want to delete mentor "${name}"?`)) {
+      try {
+        await axios.delete(`${server}/admin/deleteMentor/${id}`, { withCredentials: true });
+        setDashboardData(prev => ({
+          ...prev,
+          totalNumberofmentors: prev.totalNumberofmentors - 1,
+          mentors: prev.mentors.filter(m => m._id !== id)
+        }));
+      } catch (err) {
+        alert(err.response?.data?.message || 'Failed to delete mentor');
+      }
+    }
+  };
+
+  const handleDeleteMentee = async (id, name) => {
+    if (window.confirm(`Are you sure you want to delete mentee "${name}"?`)) {
+      try {
+        await axios.delete(`${server}/admin/deleteMentee/${id}`, { withCredentials: true });
+        setDashboardData(prev => ({
+          ...prev,
+          totalNumberofMentees: prev.totalNumberofMentees - 1,
+          mentees: prev.mentees.filter(m => m._id !== id)
+        }));
+      } catch (err) {
+        alert(err.response?.data?.message || 'Failed to delete mentee');
+      }
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -198,6 +229,9 @@ const Dashboard = () => {
                       <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Resume
                       </th>
+                      <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Action
+                      </th>
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
@@ -261,6 +295,15 @@ const Dashboard = () => {
                             View
                           </a>
                         </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                          <button
+                            onClick={() => handleDeleteMentor(mentor._id, mentor.fullName)}
+                            className="text-red-600 hover:text-red-900 p-2 rounded-full hover:bg-red-50 transition-colors"
+                            title="Delete Mentor"
+                          >
+                            <FaTrash />
+                          </button>
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -290,6 +333,9 @@ const Dashboard = () => {
                       </th>
                       <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Resume
+                      </th>
+                      <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Action
                       </th>
                     </tr>
                   </thead>
@@ -336,6 +382,15 @@ const Dashboard = () => {
                             <FaFilePdf className="mr-1" />
                             View
                           </a>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                          <button
+                            onClick={() => handleDeleteMentee(mentee._id, mentee.fullName)}
+                            className="text-red-600 hover:text-red-900 p-2 rounded-full hover:bg-red-50 transition-colors"
+                            title="Delete Mentee"
+                          >
+                            <FaTrash />
+                          </button>
                         </td>
                       </tr>
                     ))}

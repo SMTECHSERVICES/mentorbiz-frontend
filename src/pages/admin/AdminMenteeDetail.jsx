@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { server } from "../../constants/api";
 import axios from "axios";
 import {
@@ -9,13 +9,26 @@ import {
   FaUserGraduate,
   FaChalkboardTeacher,
   FaCalendarAlt,
-  FaMapMarkerAlt
+  FaMapMarkerAlt,
+  FaTrash
 } from "react-icons/fa";
 
 const AdminMenteeDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [menteeData, setMenteeData] = useState(null);
+
+  const handleDelete = async () => {
+    if (window.confirm(`Are you sure you want to delete mentee "${menteeData?.mentee?.fullName}"?`)) {
+      try {
+        await axios.delete(`${server}/admin/deleteMentee/${id}`, { withCredentials: true });
+        navigate('/admin/mentees');
+      } catch (err) {
+        alert(err.response?.data?.message || 'Failed to delete mentee');
+      }
+    }
+  };
 
   useEffect(() => {
     const fetchDetail = async () => {
@@ -53,7 +66,16 @@ const AdminMenteeDetail = () => {
 
   return (
     <div className="max-w-4xl mx-auto py-10 px-4">
-      <h2 className="text-3xl font-bold mb-6 text-gray-800">Mentee Profile</h2>
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-3xl font-bold text-gray-800">Mentee Profile</h2>
+        <button
+          onClick={handleDelete}
+          className="inline-flex items-center px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-medium text-sm shadow-sm"
+        >
+          <FaTrash className="mr-2" />
+          Delete Mentee
+        </button>
+      </div>
       
       <div className="bg-white rounded-lg shadow-md p-6 mb-8">
         <h3 className="text-xl font-semibold text-gray-700 mb-4">{mentee.fullName}</h3>

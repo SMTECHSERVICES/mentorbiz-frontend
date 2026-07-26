@@ -1,24 +1,30 @@
 import axios from 'axios';
-import React, { createContext, useContext, useState,useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { server } from '../constants/api';
+import { initialServicesData } from '../constants/initialServices';
 
 const ServicesContext = createContext();
 
 export const ServicesProvider = ({ children }) => {
-    const [servicesData, setServicesData] = useState([]);
+    const [servicesData, setServicesData] = useState(initialServicesData);
 
-    useEffect(()=>{
-        const fetchData = async ()=>{
+    useEffect(() => {
+        const fetchData = async () => {
             try {
-                const response = await axios.get(`${server}/course/getCourses`,{withCredentials:true});
-                setServicesData(response?.data);
+                const response = await axios.get(`${server}/course/getCourses`, { withCredentials: true });
+                if (response?.data && Array.isArray(response.data) && response.data.length > 0) {
+                    setServicesData(response.data);
+                } else {
+                    setServicesData(initialServicesData);
+                }
             } catch (error) {
-                console.log(error);
+                console.log("Error fetching courses from server, using default services:", error);
+                setServicesData(initialServicesData);
             }
-        }
+        };
 
         fetchData();
-    },[])
+    }, []);
 
      const [authToken, setAuthToken] = useState(null);
     const [userRole, setUserRole] = useState(null);

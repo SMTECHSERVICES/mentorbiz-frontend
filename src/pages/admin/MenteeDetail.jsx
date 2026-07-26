@@ -9,7 +9,8 @@ import {
   FaPhone, 
   FaEnvelope, 
   FaFilePdf,
-  FaDownload
+  FaDownload,
+  FaTrash
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
@@ -20,6 +21,18 @@ const MenteeDetail = () => {
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterInterest, setFilterInterest] = useState('all');
+  
+  const handleDeleteMentee = async (id, name) => {
+    if (window.confirm(`Are you sure you want to delete mentee "${name}"?`)) {
+      try {
+        await axios.delete(`${server}/admin/deleteMentee/${id}`, { withCredentials: true });
+        setMentees(prev => prev.filter(m => m._id !== id));
+        setFilteredMentees(prev => prev.filter(m => m._id !== id));
+      } catch (err) {
+        alert(err.response?.data?.message || 'Failed to delete mentee');
+      }
+    }
+  };
   
   // Unique areas of interest for filter dropdown
   const areasOfInterest = [...new Set(
@@ -197,9 +210,16 @@ const MenteeDetail = () => {
                     <FaDownload className="ml-2 text-sm" />
                   </a>
                 </div>
-                 <div className="mt-6">
-                  
-                 <Link className='text-blue-500' to={`/admin/mentee-detail/${mentee._id}`}>View Detail</Link>
+                <div className="mt-6 flex items-center justify-between">
+                  <Link className='text-blue-500 hover:underline font-medium' to={`/admin/mentee-detail/${mentee._id}`}>View Detail</Link>
+                  <button
+                    onClick={() => handleDeleteMentee(mentee._id, mentee.fullName)}
+                    className="inline-flex items-center px-3 py-1.5 bg-red-50 text-red-600 rounded-lg hover:bg-red-100 transition-colors text-sm font-medium"
+                    title="Delete Mentee"
+                  >
+                    <FaTrash className="mr-1.5" />
+                    Delete
+                  </button>
                 </div>
               </div>
             </div>
